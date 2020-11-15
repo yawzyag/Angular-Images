@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Image } from '../models/Image';
+import { ImageRequestData } from '../models/ImageResponse';
 import { ImageService } from '../services/image.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ImageService } from '../services/image.service';
   styleUrls: ['./image-search.component.css'],
 })
 export class ImageSearchComponent implements OnInit {
-  q = 'macbook';
+  q = '';
   category = '';
   name: string = 'yesid';
   imageList: Image[] | undefined;
@@ -18,14 +19,15 @@ export class ImageSearchComponent implements OnInit {
   changeName(name: string) {
     this.name = name;
   }
-  queryImages(obj: { q: string; category: string }) {
+  queryImages(obj?: ImageRequestData) {
     this.loader = true;
-    this.category = obj.category;
-    this.q = obj.q;
+    this.category = obj ? obj.category : "";
+    this.q = obj ? obj.q : "";
     const objToSend = { q: this.q, category: this.category };
     this.imageService.getImages(objToSend).subscribe(
       (imageResp) => {
         this.imageList = imageResp.hits;
+        console.log(imageResp.total, imageResp.totalHits);
       },
       (err) => {
         console.log('ImageSearchComponent -> queryImages -> err', err);
@@ -36,15 +38,6 @@ export class ImageSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.imageService.getImages().subscribe(
-      (imageResp) => {
-        this.imageList = imageResp.hits;
-      },
-      (err) => {
-        console.log('ImageSearchComponent -> queryImages -> err', err);
-        this.loader = false;
-      },
-      () => (this.loader = false)
-    );
+    this.queryImages();
   }
 }

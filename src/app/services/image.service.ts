@@ -17,6 +17,7 @@ export class ImageService {
   // get todos
   getImages(options?: any): Observable<ImageResponse> {
     let params = new HttpParams().set('key', environment.API_KEY);
+    params = params.set('per_page', "12");
     if (options && options.q) {
       params = params.set('q', options.q);
     }

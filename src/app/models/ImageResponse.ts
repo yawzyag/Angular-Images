@@ -5,3 +5,8 @@ export class ImageResponse {
   'totalHits': number;
   'hits': Image[];
 }
+
+export class ImageRequestData {
+  "q": string;
+  "category": string;
+}
