@@ -6,7 +6,6 @@
 />
 <ng-template #mymodal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
     <button
       type="button"
       class="close"
@@ -36,15 +35,17 @@
     <div class="row w-100">
       <div class="col">
         <p class="mb-0">
-          Tags: <span class="text-primary">{{ image.tags }}</span>
+          Tags: <span class="text-primary">{{ image ? image.tags : "" }}</span>
         </p>
       </div>
       <div class="col">
         <small class="pr-2"
-          >Total views: <span class="text-info">{{ image.views }}</span></small
+          >Total views:
+          <span class="text-info">{{ image ? image.views : 0 }}</span></small
         >
         <small
-          >Total likes: <span class="text-info">{{ image.likes }}</span></small
+          >Total likes:
+          <span class="text-info">{{ image ? image.likes : 0 }}</span></small
         >
       </div>
     </div>

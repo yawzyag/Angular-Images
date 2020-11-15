@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { ImageItemComponent } from './components/image-item/image-item.component
 import { ImageModalComponent } from './components/image-modal/image-modal.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageSearchComponent } from './image-search/image-search.component';
 
 @NgModule({
   declarations: [
@@ -16,15 +18,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchBarComponent,
     ImageListComponent,
     ImageItemComponent,
-    ImageModalComponent
+    ImageModalComponent,
+    ImageSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
