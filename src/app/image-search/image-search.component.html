@@ -1,9 +1,5 @@
 <app-search-bar (queryImages)="queryImages($event)"></app-search-bar>
 <app-image-list *ngIf="!loader" [imageList]="imageList"></app-image-list>
-<h1 *ngIf="loader" class="text-dark">
-  <img
-    src="https://pixabay.com/get/55e7d5404e54a514f6da8c7dda79367d143ed7e654566c48732f7ed0914bcd5eba_1280.jpg"
-    class="img-fluid"
-    alt=""
-  />
-</h1>
+<div *ngIf="loader">
+  <app-loader></app-loader>
+</div>

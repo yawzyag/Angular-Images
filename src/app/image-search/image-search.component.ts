@@ -12,7 +12,7 @@ export class ImageSearchComponent implements OnInit {
   category = '';
   name: string = 'yesid';
   imageList: Image[] | undefined;
-  loader: boolean = false;
+  loader: boolean = true;
 
   constructor(private imageService: ImageService) {}
   changeName(name: string) {
@@ -27,9 +27,12 @@ export class ImageSearchComponent implements OnInit {
       (imageResp) => {
         this.imageList = imageResp.hits;
       },
-      (err) => console.log('ImageSearchComponent -> queryImages -> err', err)
+      (err) => {
+        console.log('ImageSearchComponent -> queryImages -> err', err);
+        this.loader = false;
+      },
+      () => (this.loader = false)
     );
-    this.loader = false;
   }
 
   ngOnInit(): void {
@@ -37,7 +40,11 @@ export class ImageSearchComponent implements OnInit {
       (imageResp) => {
         this.imageList = imageResp.hits;
       },
-      (err) => console.log('ImageSearchComponent -> queryImages -> err', err)
+      (err) => {
+        console.log('ImageSearchComponent -> queryImages -> err', err);
+        this.loader = false;
+      },
+      () => (this.loader = false)
     );
   }
 }

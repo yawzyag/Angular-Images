@@ -11,6 +11,7 @@ import { ImageModalComponent } from './components/image-modal/image-modal.compon
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSearchComponent } from './image-search/image-search.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ImageSearchComponent } from './image-search/image-search.component';
     ImageItemComponent,
     ImageModalComponent,
     ImageSearchComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
