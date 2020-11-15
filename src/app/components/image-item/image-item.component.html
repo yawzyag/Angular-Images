@@ -1,10 +1,10 @@
 <img
-  class="p-2 col-6 col-sm-4 col-md-3 col-xl-2 img-fluid"
+  class="p-2 col-6 col-sm-4 col-md-3 col-xl-2 img-fluid img-cursor"
   src="{{ image ? image.previewURL : '' }}"
   alt=""
   (click)="open(mymodal)"
 />
-<ng-template #mymodal let-modal>
+<ng-template #mymodal let-modal class="modal-lg">
   <div class="modal-header">
     <button
       type="button"

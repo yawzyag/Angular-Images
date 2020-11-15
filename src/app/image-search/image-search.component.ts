@@ -12,31 +12,32 @@ export class ImageSearchComponent implements OnInit {
   category = '';
   name: string = 'yesid';
   imageList: Image[] | undefined;
+  loader: boolean = false;
 
-  constructor(private imageService: ImageService) {
-    console.log(123);
-    this.changeName('2');
-    console.log(this.name);
-  }
+  constructor(private imageService: ImageService) {}
   changeName(name: string) {
     this.name = name;
   }
   queryImages(obj: { q: string; category: string }) {
+    this.loader = true;
     this.category = obj.category;
     this.q = obj.q;
     const objToSend = { q: this.q, category: this.category };
-    this.imageService.getImages(objToSend).subscribe((imageResp) => {
-      this.imageList = imageResp.hits;
-      console.log(
-        'ImageSearchComponent -> queryImages -> imageResp.hits',
-        imageResp.hits
-      );
-    });
+    this.imageService.getImages(objToSend).subscribe(
+      (imageResp) => {
+        this.imageList = imageResp.hits;
+      },
+      (err) => console.log('ImageSearchComponent -> queryImages -> err', err)
+    );
+    this.loader = false;
   }
 
   ngOnInit(): void {
-    this.imageService.getImages().subscribe((imageResp) => {
-      this.imageList = imageResp.hits;
-    });
+    this.imageService.getImages().subscribe(
+      (imageResp) => {
+        this.imageList = imageResp.hits;
+      },
+      (err) => console.log('ImageSearchComponent -> queryImages -> err', err)
+    );
   }
 }

@@ -8,14 +8,28 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class SearchBarComponent implements OnInit {
   @Output() queryImages: EventEmitter<any> = new EventEmitter();
-  constructor(private imageService: ImageService) {}
+  q: string = '';
+  category: string = '';
+  options: string[];
+  constructor(private imageService: ImageService) {
+    this.options = [
+      'science',
+      'education',
+      'people',
+      'feelings',
+      'computer',
+      'buildings',
+    ];
+  }
 
   ngOnInit(): void {}
-  getParamsResult(q: string = 'macbook', category: string = '') {
+  onSubmit() {
+    this.getParamsResult(this.q, this.category);
+  }
+  getParamsResult(q: string = '', category: string = '') {
     /* this.imageService.getImages({}).subscribe((imageResp) => {
       console.log(imageResp);
     }); */
-    console.log(q, category);
 
     this.queryImages.emit({ q, category });
   }

@@ -1,37 +1,32 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark pb-2">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdown"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Dropdown
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
+      <div class="m-auto form-group">
+        <select
+          class="form-control"
+          id="exampleFormControlSelect1"
+          [(ngModel)]="category"
+          (change)="onSubmit()"
+        >
+          <option value="" selected="selected">Category</option>
+          <option *ngFor="let option of options">
+            {{ option }}
+          </option>
+        </select>
       </div>
     </li>
   </ul>
-  <form class="form-inline">
+  <form class="form-inline" (ngSubmit)="onSubmit()">
     <input
       class="form-control mr-sm-2"
       type="search"
       placeholder="Search for images"
       aria-label="Search"
       name="q"
-      [(ngModel)="q"
-      ]
+      [(ngModel)]="q"
     />
     <button
-      (click)="getParamsResult()"
+      (click)="onSubmit()"
       class="btn btn-outline-success my-2 my-sm-0"
       type="submit"
     >

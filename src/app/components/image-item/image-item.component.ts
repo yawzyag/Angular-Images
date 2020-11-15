@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalDismissReasons, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import {
+  ModalDismissReasons,
+  NgbModal,
+  NgbModalOptions,
+} from '@ng-bootstrap/ng-bootstrap';
 import { Image } from 'src/app/models/Image';
 
 @Component({
@@ -17,6 +21,8 @@ export class ImageItemComponent implements OnInit {
     this.modalOptions = {
       backdrop: 'static',
       backdropClass: 'customBackdrop',
+      size: 'xl',
+      centered: true,
     };
   }
 
