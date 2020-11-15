@@ -27,10 +27,6 @@ export class SearchBarComponent implements OnInit {
     this.getParamsResult(this.q, this.category);
   }
   getParamsResult(q: string = '', category: string = '') {
-    /* this.imageService.getImages({}).subscribe((imageResp) => {
-      console.log(imageResp);
-    }); */
-
     this.queryImages.emit({ q, category });
   }
 }

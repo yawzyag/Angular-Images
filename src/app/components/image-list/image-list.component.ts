@@ -11,7 +11,6 @@ export class ImageListComponent implements OnInit {
   @Input() imageList: Image[] | undefined;
 
   constructor() {
-    console.log('ImageListComponent -> imageList', this.imageList);
   }
 
   ngOnInit(): void {}
