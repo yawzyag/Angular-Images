@@ -1,0 +1,52 @@
+<img
+  class="p-2 col-6 col-sm-4 col-md-3 col-xl-2 img-fluid"
+  src="{{ image ? image.previewURL : '' }}"
+  alt=""
+  (click)="open(mymodal)"
+/>
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="img-cont">
+      <img
+        class="img-fluid img-h"
+        src="{{ image ? image.largeImageURL : '' }}"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Ok
+    </button> -->
+    <div class="row w-100">
+      <div class="col">
+        <p class="mb-0">
+          Tags: <span class="text-primary">{{ image.tags }}</span>
+        </p>
+      </div>
+      <div class="col">
+        <small class="pr-2"
+          >Total views: <span class="text-info">{{ image.views }}</span></small
+        >
+        <small
+          >Total likes: <span class="text-info">{{ image.likes }}</span></small
+        >
+      </div>
+    </div>
+  </div>
+</ng-template>

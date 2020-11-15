@@ -1,0 +1,8 @@
+.img-h {
+    max-height: 50vh;
+}
+.img-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
