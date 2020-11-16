@@ -8,6 +8,9 @@
 }
 .img-cursor {
     cursor: pointer;
+    height: 24vh;
+    width: auto;
+    object-fit: contain;
 }
 
 button:focus {

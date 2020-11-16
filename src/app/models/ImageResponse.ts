@@ -7,6 +7,8 @@ export class ImageResponse {
 }
 
 export class ImageRequestData {
-  "q": string;
-  "category": string;
+  'q': string;
+  'category': string;
+  'currentPage'?: number;
+  'page_size'?: number;
 }

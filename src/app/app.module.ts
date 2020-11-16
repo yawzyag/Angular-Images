@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageSearchComponent } from './image-search/image-search.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ImageModalComponent,
     ImageSearchComponent,
     LoaderComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

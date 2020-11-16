@@ -11,23 +11,31 @@ import { ImageService } from '../services/image.service';
 export class ImageSearchComponent implements OnInit {
   q = '';
   category = '';
-  name: string = 'yesid';
+  total: number = 0;
+  totalHits: number = 0;
   imageList: Image[] | undefined;
   loader: boolean = true;
+  currentPage: number = 1;
+  innerWidth: number = 0;
 
   constructor(private imageService: ImageService) {}
-  changeName(name: string) {
-    this.name = name;
-  }
+
   queryImages(obj?: ImageRequestData) {
     this.loader = true;
-    this.category = obj ? obj.category : "";
-    this.q = obj ? obj.q : "";
-    const objToSend = { q: this.q, category: this.category };
+    this.category = obj ? obj.category : '';
+    this.q = obj ? obj.q : '';
+    this.currentPage = obj && obj.currentPage ? obj.currentPage : 1;
+    const objToSend = {
+      q: this.q,
+      category: this.category,
+      page: this.currentPage,
+      size: this.innerWidth,
+    };
     this.imageService.getImages(objToSend).subscribe(
       (imageResp) => {
         this.imageList = imageResp.hits;
-        console.log(imageResp.total, imageResp.totalHits);
+        this.total = imageResp.total;
+        this.totalHits = imageResp.totalHits;
       },
       (err) => {
         console.log('ImageSearchComponent -> queryImages -> err', err);
@@ -38,6 +46,16 @@ export class ImageSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.queryImages();
+    this.innerWidth = window.innerWidth;
+    this.queryImages({
+      q: this.q,
+      category: this.category,
+      page_size: this.innerWidth,
+    });
+  }
+  changePage(i: number) {
+    this.currentPage = i;
+
+    this.queryImages({ category: this.category, q: this.q, currentPage: i });
   }
 }

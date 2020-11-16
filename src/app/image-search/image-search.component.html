@@ -3,3 +3,13 @@
 <div *ngIf="loader">
   <app-loader></app-loader>
 </div>
+<app-pagination
+  *ngIf="!loader && totalHits"
+  [total]="total"
+  [totalHits]="totalHits"
+  [currentPage]="currentPage"
+  (changePage)="changePage($event)"
+></app-pagination>
+<h2 *ngIf="!loader && totalHits === 0" class="text-light text-center p-3">
+  {{ totalHits }} results!
+</h2>
